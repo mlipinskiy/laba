@@ -1,0 +1,34 @@
+m = [
+    [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+]
+
+start = 9
+visited = [start]
+current = [start]
+levels = {}
+level_num = 1
+
+while current:
+    next_level = []
+    for vertex in current:
+        levels[vertex] = level_num
+        for neigh, edge in enumerate(m[vertex - 1]):
+            if edge == 1 and (neigh + 1) not in visited:
+                visited.append(neigh + 1)
+                next_level.append(neigh + 1)
+    current = next_level
+    level_num += 1
+
+print("Вершина : Уровень")
+for v in sorted(levels):
+    print(v, ":", levels[v])
