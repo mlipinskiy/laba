@@ -1,0 +1,44 @@
+import random
+
+def min_n (a):
+    a.sort()
+    return a[0]
+
+def max_n (a):
+    a.sort()
+    return a[-1]
+
+def sum_n (a):
+    c = 0
+    for i in range(len(a)):
+        if a[i] == 0:
+            break
+        c += a[i]
+    return c
+
+def prod_n (a):
+    c = 1
+    for i in range(len(a)):
+        if a[i] == 1:
+            break
+        c *= a[i]
+    return c
+
+def usloviya(a):
+    c = 3
+    b = '>'
+    q = []
+    if b == '<':
+        for i in a:
+            if c < i:
+                q.append(i)
+
+    if b == '>':
+        for i in a:
+            if c < i:
+                q.append(i)
+
+    return q
+
+a = sorted ([random.randint(0, 10) for _ in range(10)])
+print (min_n(a), max_n(a), sum_n(a), prod_n(a), usloviya(a))
